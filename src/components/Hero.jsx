@@ -1,16 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  FiGithub,
-  FiLinkedin,
-  FiMail,
-  FiArrowDown,
-  FiCode,
-  FiServer,
-  FiDatabase,
-  FiLayout,
-} from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiZap, FiCheck, FiTrendingUp } from 'react-icons/fi';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,171 +19,180 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen pt-20 flex items-center justify-center bg-white dark:bg-gray-900 overflow-hidden relative"
+      className="min-h-screen pt-20 flex items-center justify-center relative overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 dark:bg-blue-900/10 rounded-full -translate-y-48 translate-x-48" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-50 dark:bg-blue-900/10 rounded-full translate-y-48 -translate-x-48" />
+      {/* Background with subtle gradient */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-900/90 to-blue-900/80" />
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: 'url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
       </div>
 
-      {/* Grid Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.015)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      {/* Performance pattern overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.05)_0%,transparent_50%),radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.05)_0%,transparent_50%)]" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* LEFT CONTENT */}
-          <div className="space-y-8">
-            {/* Intro */}
-            <div
-              className={`space-y-4 transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/30 mb-4">
-                <span className="w-2 h-2 bg-green-500 rounded-full mr-2" />
-                <span className="text-sm font-medium text-blue-700 dark:text-blue-300">
-                  Open to mid-level opportunities
-                </span>
-              </div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white tracking-tight">
-                Patrick
-                <span className="text-blue-600 dark:text-blue-400"> Iyiakimo</span>
-              </h1>
-
-              <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-medium">
-                Mid-Level Full Stack Engineer
-              </h2>
-
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg max-w-xl">
-                I design and build production-ready web applications with a focus
-                on performance, scalability, and clean architecture. I enjoy
-                owning features end-to-end—from idea to deployment—and
-                collaborating with teams to ship reliable software.
-              </p>
-            </div>
-
-            {/* Tech Stack */}
-            <div
-              className={`space-y-4 transition-all duration-700 delay-100 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                Core Technologies
-              </h3>
-
-              <div className="flex flex-wrap gap-2">
-                {[
-                  { name: 'React', icon: <FiCode /> },
-                  { name: 'Next.js', icon: <FiLayout /> },
-                  { name: 'TypeScript', icon: <FiCode /> },
-                  { name: 'Node.js', icon: <FiServer /> },
-                  { name: 'PostgreSQL', icon: <FiDatabase /> },
-                  { name: 'MongoDB', icon: <FiDatabase /> },
-                  { name: 'Docker', icon: <FiLayout /> },
-                  { name: 'AWS', icon: <FiServer /> },
-                ].map((tech) => (
-                  <div
-                    key={tech.name}
-                    className="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-700 dark:text-gray-300 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
-                  >
-                    <span className="mr-2 text-blue-600 dark:text-blue-400">
-                      {tech.icon}
-                    </span>
-                    <span className="font-medium text-sm">{tech.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div
-              className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-200 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <button
-                onClick={() => scrollToSection('#projects')}
-                className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center gap-2"
-              >
-                View My Work
-                <FiArrowDown className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={() => scrollToSection('#contact')}
-                className="px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg font-semibold hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 flex items-center justify-center gap-2"
-              >
-                <FiMail className="w-4 h-4" />
-                Get In Touch
-              </button>
-            </div>
-
-            {/* Socials */}
-            <div
-              className={`flex items-center space-x-4 pt-4 transition-all duration-700 delay-300 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:text-blue-600 hover:border-blue-500 transition-all"
-              >
-                <FiGithub className="w-5 h-5" />
-              </a>
-
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:text-blue-600 hover:border-blue-500 transition-all"
-              >
-                <FiLinkedin className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
-
-          {/* RIGHT CONTENT – PROFESSIONAL SNAPSHOT */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 py-16 w-full">
+        <div className="text-center">
+          {/* Status with performance focus */}
           <div
-            className={`transition-all duration-700 delay-400 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            className={`inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-emerald-500/10 backdrop-blur-sm border border-blue-500/30 mb-8 transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                Professional Snapshot
-              </h3>
+            <FiZap className="w-4 h-4 text-blue-400 mr-2" />
+            <span className="text-sm font-medium text-gray-300">
+              Performance-focused Engineer • Available for roles
+            </span>
+          </div>
 
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Experience</span>
-                <span className="font-medium">3+ Years</span>
-              </div>
+          {/* Name */}
+          <div
+            className={`mb-6 transition-all duration-700 delay-100 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-2">
+              Patrick Iyiakimo
+            </h1>
+          </div>
 
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Projects Delivered</span>
-                <span className="font-medium">20+</span>
-              </div>
+          {/* Title with performance emphasis */}
+          <div
+            className={`mb-8 transition-all duration-700 delay-200 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            <h2 className="text-2xl md:text-3xl text-gray-300 font-medium">
+              Full Stack Engineer
+              <span className="block text-lg text-blue-400 font-normal mt-2">
+                Specializing in high-performance applications
+              </span>
+            </h2>
+          </div>
 
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Primary Stack</span>
-                <span className="font-medium">
-                  React · Node · PostgreSQL
-                </span>
-              </div>
+          {/* Performance-focused Introduction */}
+          <div
+            className={`max-w-2xl mx-auto mb-8 transition-all duration-700 delay-300 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            <p className="text-lg text-gray-300 leading-relaxed mb-4">
+              I build web applications where every millisecond matters. 
+              My focus is on creating <span className="text-white font-semibold">blazing-fast</span>, 
+              <span className="text-white font-semibold"> scalable</span>, and 
+              <span className="text-white font-semibold"> reliable</span> systems that deliver exceptional user experiences.
+            </p>
+          </div>
 
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Current Focus</span>
-                <span className="font-medium">
-                  Scalable systems & APIs
-                </span>
+          {/* Performance Highlights */}
+          <div
+            className={`grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-12 transition-all duration-700 delay-400 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            {[
+              { icon: <FiZap className="w-4 h-4" />, label: 'Fast Load Times', desc: '< 2s FCP' },
+              { icon: <FiTrendingUp className="w-4 h-4" />, label: 'Optimized', desc: '95+ Lighthouse' },
+              { icon: <FiCheck className="w-4 h-4" />, label: 'Test Coverage', desc: '90%+ Unit Tests' },
+            ].map((item) => (
+              <div 
+                key={item.label} 
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:border-blue-500/30 transition-all duration-200"
+              >
+                <div className="flex items-center justify-center space-x-2 mb-2">
+                  <span className="text-blue-400">{item.icon}</span>
+                  <span className="text-sm font-medium text-gray-300">{item.label}</span>
+                </div>
+                <div className="text-sm text-gray-400">{item.desc}</div>
               </div>
+            ))}
+          </div>
+
+          {/* Philosophy */}
+          <div
+            className={`max-w-2xl mx-auto mb-12 transition-all duration-700 delay-500 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            <div className="border-l-2 border-blue-500 pl-4">
+              <p className="text-gray-300 italic">
+                "Performance isn't just a feature—it's fundamental to user experience. 
+                I measure success in milliseconds saved and frustration avoided."
+              </p>
             </div>
           </div>
+
+          {/* CTA Buttons */}
+          <div
+            className={`flex flex-col sm:flex-row gap-4 justify-center mb-12 transition-all duration-700 delay-600 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            <button
+              onClick={() => scrollToSection('#projects')}
+              className="group px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2"
+            >
+              <span>View Performance Projects</span>
+              <FiArrowDown className="w-4 h-4 group-hover:animate-bounce" />
+            </button>
+
+            <button
+              onClick={() => scrollToSection('#contact')}
+              className="px-8 py-3 bg-transparent border-2 border-blue-500/50 text-white font-semibold rounded-lg hover:bg-blue-500/10 hover:border-blue-500 transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2"
+            >
+              <FiMail className="w-4 h-4" />
+              <span>Discuss Performance</span>
+            </button>
+          </div>
+
+          {/* Social Links */}
+          <div
+            className={`flex justify-center gap-6 transition-all duration-700 delay-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            <a
+              href="https://github.com/patrickiyiakimo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 border border-blue-500/30 rounded-lg text-white hover:bg-blue-500/10 hover:border-blue-500 transition-all duration-200"
+              aria-label="GitHub"
+            >
+              <FiGithub className="w-5 h-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/patrick-iyiakimo-6a15a226a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 border border-blue-500/30 rounded-lg text-white hover:bg-blue-500/10 hover:border-blue-500 transition-all duration-200"
+              aria-label="LinkedIn"
+            >
+              <FiLinkedin className="w-5 h-5" />
+            </a>
+          </div>
         </div>
+
+        {/* Scroll Indicator */}
+        {/* <div
+          className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-700 delay-800 ${
+            isVisible ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <button
+            onClick={() => scrollToSection('#about')}
+            className="flex flex-col items-center space-y-2 text-blue-400 hover:text-white transition-colors duration-200"
+          >
+            <span className="text-sm font-medium">See My Performance Work</span>
+            <FiArrowDown className="w-5 h-5 animate-bounce" />
+          </button>
+        </div> */}
       </div>
     </section>
   );

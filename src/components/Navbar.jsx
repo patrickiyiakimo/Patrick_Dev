@@ -1,12 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FiMenu, FiX, FiSun, FiMoon, FiCode } from 'react-icons/fi';
+import { FiMenu, FiX, FiCode } from 'react-icons/fi';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
 
   useEffect(() => {
@@ -29,23 +28,9 @@ const Navbar = () => {
       }
     };
 
-    // Check system preference for dark mode
-    const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setIsDarkMode(isSystemDark);
-    
-    // Apply dark mode class to document
-    if (isSystemDark) {
-      document.documentElement.classList.add('dark');
-    }
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle('dark');
-  };
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
@@ -111,15 +96,6 @@ const Navbar = () => {
 
             {/* Right Section - Desktop */}
             <div className="hidden lg:flex items-center space-x-4">
-              {/* Dark Mode Toggle */}
-              <button
-                onClick={toggleDarkMode}
-                className="p-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200"
-                aria-label="Toggle dark mode"
-              >
-                {isDarkMode ? <FiSun className="text-lg" /> : <FiMoon className="text-lg" />}
-              </button>
-
               {/* CTA Button */}
               <button 
                 onClick={() => scrollToSection('#contact')}
@@ -130,16 +106,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="flex lg:hidden items-center space-x-3">
-              {/* Dark Mode Toggle - Mobile */}
-              <button
-                onClick={toggleDarkMode}
-                className="p-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200"
-                aria-label="Toggle dark mode"
-              >
-                {isDarkMode ? <FiSun className="text-lg" /> : <FiMoon className="text-lg" />}
-              </button>
-
+            <div className="flex lg:hidden items-center">
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
