@@ -1,42 +1,3 @@
-// import { Geist, Geist_Mono } from "next/font/google";
-// import "./globals.css";
-// import Navbar from "@/components/Navbar";
-// import Contact from "@/components/Contact";
-
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
-// export const metadata = {
-//   title: 'Patrick - Full Stack Developer',
-//   description: 'Full Stack Developer specializing in scalable solutions and exceptional user experiences',
-// };
-
-// export default function RootLayout({ children }) {
-//   return (
-//     <html lang="en">
-//       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-//         <Navbar />
-//         {children}
-//         <Contact />
-//       </body>
-//     </html>
-//   );
-// }
-
-
-
-
-
-
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -61,10 +22,10 @@ export const metadata = {
   },
   metadataBase: new URL("https://patrick-dev-pied.vercel.app/"),
   openGraph: {
-    title: "OXORA - Global Investments Platform",
-    description: "Trade smarter and invest globally with OXORA Broker.",
+    title: 'Patrick - Full Stack Developer',
+    description: 'Full Stack Developer specializing in scalable solutions and exceptional user experiences',
     url: "https://patrick-dev-pied.vercel.app/",
-    siteName: "OXORA",
+    siteName: "Patrick Iyiakimo",
     images: [
       {
         url: "/images/IMG_E3124.JPG",
