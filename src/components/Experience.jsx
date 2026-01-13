@@ -9,7 +9,7 @@ const Experience = () => {
       company: 'Aurray.ai',
       location: 'London · Remote',
       role: 'Software Engineer',
-      period: 'Nov 2023 - Present',
+      period: 'Nov 2026 - Present',
       duration: '1 yr 8 mos',
       description: 'Developing real-time trading dashboards and AI-powered financial platforms with focus on high-performance data visualization and responsive design.',
       achievements: [
